@@ -11,15 +11,19 @@ end
 ------------------------------------------------------------------------------
 class LinkedList
 
+  # assigns initial value of nil to head and tail of Linked List
   def initialize
     @head = nil
     @tail = nil
   end 
 
+  # creates a new node (value is data node contains) (next_node is
+  # reference to next node (its neighbor))
   def create_node(value = nil, next_node = nil)
     Node.new(value, next_node)
   end 
 
+  # creates new node with value specified and adds to end of list
   def append(value)
     node = create_node(value)
     
@@ -33,6 +37,7 @@ class LinkedList
   
   end 
 
+  # creates new node with value specified and adds to front of list
   def prepend(value)
     node = create_node(value)
 
@@ -45,6 +50,7 @@ class LinkedList
     end
   end 
 
+  # returns size (amt of nodes) of list
   def size(node = @head, counter = 1)
 
     if node.nil?
@@ -60,18 +66,22 @@ class LinkedList
   def head
   end
 
+  # returns tail of list
   def tail 
     return node if node.next_node.nil?
     tail(node.next_node)
   end 
 
+  # returns node at specified index or nil 
   def at(node = @head, index)
     index.times do 
       node = node.next_node
+      return nil if index > size(node = @head, counter = 1)
     end
     node
   end
 
+  # removes last node of list
   def pop(node = @head)
     if node.next_node.next_node.nil?
       node.next_node = nil
@@ -81,6 +91,7 @@ class LinkedList
     end
   end
 
+  # returns true or false 
   def contains?(value)
     node = @head
     until node.nil? 
@@ -90,12 +101,14 @@ class LinkedList
     false
   end
 
+  # locates node with value specified, returns node's index
   def find(value, node = @head, index = 0)
     return index if node.value == value
     return nil if node.next_node.nil?
     find(value, node.next_node, index + 1)
   end 
 
+  # formats nodes into ( value ) -> ( value ) -> ( value ) -> nil
   def to_s(node = @head, string = '')
     string += "(#{node.value}) -> "
     return string += "nil" if node.next_node.nil?
