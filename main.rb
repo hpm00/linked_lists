@@ -98,7 +98,7 @@ class LinkedList
 
   def to_s(node = @head, string = '')
     string += "(#{node.value}) -> "
-    return string += "(#{node.value}) -> nil" if node.next_node.nil?
+    return string += "nil" if node.next_node.nil?
     to_s(node.next_node, string)
   end
   
