@@ -44,5 +44,16 @@ class LinkedList
       @head = node
     end
   end 
+
+  def size(node = @head, counter = 1)
+    if node.nil?
+      return 0
+    elsif node.next_node.nil?
+      return counter
+    else 
+      return size(node.next_node, counter + 1)
+    end
+    
+  end
   
 end
