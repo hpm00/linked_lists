@@ -46,6 +46,7 @@ class LinkedList
   end 
 
   def size(node = @head, counter = 1)
+
     if node.nil?
       return 0
     elsif node.next_node.nil?
@@ -55,5 +56,21 @@ class LinkedList
     end
     
   end
+
+  def head
+  end
+
+  def tail 
+    return node if node.next_node.nil?
+    tail(node.next_node)
+  end 
+
+  def at(node = @head, index)
+    index.times do 
+      node = node.next_node
+    end
+    node
+  end
+  
   
 end
