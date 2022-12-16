@@ -95,6 +95,12 @@ class LinkedList
     return nil if node.next_node.nil?
     find(value, node.next_node, index + 1)
   end 
+
+  def to_s(node = @head, string = '')
+    string += "(#{node.value}) -> "
+    return string += "(#{node.value}) -> nil" if node.next_node.nil?
+    to_s(node.next_node, string)
+  end
   
 
 end
