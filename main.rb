@@ -71,6 +71,15 @@ class LinkedList
     end
     node
   end
+
+  def pop(node = @head)
+    if node.next_node.next_node.nil?
+      node.next_node = nil
+      @tail = node
+    else
+      pop(node.next_node)
+    end
+  end
   
-  
+
 end
